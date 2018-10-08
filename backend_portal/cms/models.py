@@ -2,16 +2,39 @@ from django.db import models
 #from django.contrib.postgres.fields import ArrayField
 #from django_pg import models
 
-# Seção de informações gerais
-class InformacoesInfobio(models.Model):
-    descricao = models.TextField()
-    perfil_aluno = models.TextField()
-    grade_curricular = models.FileField()
-    diferenciais = models.TextField()
-    #data_criacao = models.DateField(auto_now_add=True)
-    #data_alteracao = models.DateField(auto_now=True)
+class Secao(models.Model):
+    nome = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=200)
 
-class InformacoesUfcspa(models.Model):
+    def __str__(self):
+        return self.nome
+
+class Categoria(models.Model):
+    nome = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=200)
+    id_secao = models.ForeignKey(Secao, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+
+class Conteudo(models.Model):
+    titulo = models.CharField(max_length=50)
+    descricao = models.TextField()
+    corpo = models.TextField()
+    autor = models.CharField(max_length=100)
+    data_criacao = models.DateField(auto_now_add=True)
+    data_alteracao = models.DateField(auto_now=True)
+    data_expiracao = models.DateField()
+    id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+
+    class Meta:
+        ordering = ['data_criacao']
+
+
+'''class InformacoesUfcspa(models.Model):
     descricao = models.TextField()
     infraestrutura = models.TextField()
     cursos = models.TextField()
@@ -54,4 +77,4 @@ class Habilidades(models.Model):
 
 class AtuacaoProfissional(models.Model):
     empresas = models.TextField()
-    areas_atuacao = models.TextField()
+    areas_atuacao = models.TextField()'''
