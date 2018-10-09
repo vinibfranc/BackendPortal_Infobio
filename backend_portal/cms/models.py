@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce import HTMLField
 
 class Section(models.Model):
     name = models.CharField(max_length=50)
@@ -18,7 +19,8 @@ class Category(models.Model):
 class Content(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
-    body = models.TextField()
+    #body = models.TextField()
+    body = HTMLField('Content')
     author = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
     change_date = models.DateField(auto_now=True)
