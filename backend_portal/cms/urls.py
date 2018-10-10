@@ -1,6 +1,6 @@
 
 from django.urls import include, path
-from .api import router
+from cms.api import router
 #from .views import list_info
 
 
