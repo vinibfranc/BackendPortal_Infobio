@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
 from rest_framework_extensions.routers import NestedRouterMixin
 from cms.views import SectionViewSet, CategoryViewSet, ContentViewSet
-from rest_framework_nested import routers
+#from rest_framework_nested import routers
 
 #from rest_framework_extensions.routers import ExtendedSimpleRouter
 
