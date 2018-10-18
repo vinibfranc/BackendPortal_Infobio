@@ -1,6 +1,6 @@
 from django.db import models
 from tinymce import HTMLField
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 # Módulo de página: Conteúdo normal
@@ -24,8 +24,8 @@ class Content(models.Model):
     description = models.TextField()
     #body = models.TextField()
     body = HTMLField('Content')
-    #author = models.CharField(max_length=100)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
+    #author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
     change_date = models.DateField(auto_now=True)
     expiration_date = models.DateField()
@@ -43,7 +43,8 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     text = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
+    #author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

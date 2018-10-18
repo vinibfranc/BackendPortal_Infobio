@@ -1,0 +1,26 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Backend</title>
+  </head>
+  <body>
+
+    <ul>
+        <li>Acessar seções de conteúdo: adicione /content na URL</li>
+        <li>Acessar <a href="{% url 'post' %}">Posts</a></li>
+        <li>Acessar <a href="{% url 'comment' %}">Comentários</a></li>
+    </ul>
+  
+
+    
+    
+  </body>
+</html>
