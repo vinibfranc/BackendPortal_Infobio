@@ -13,14 +13,35 @@
   </head>
   <body>
 
-    <ul>
-        <li>Acessar seções de conteúdo: adicione /content na URL</li>
+    <div class="container">
+
+      <h3>Inserção dos conteúdos (admin)</h3>
+      <ul>
+          <li>Acessar <a href="{% url 'admin:index' %}">Admin</a></li>
+      </ul>
+      <hr>
+
+      <h3>Módulo de página</h3>
+      <ul>
+          <li>Acessar <a href="{% url 'section' %}">Seções</a></li>
+          <li>Acessar <a href="{% url 'category' %}">Categorias</a></li>
+          <li>Acessar <a href="{% url 'content' %}">Conteúdos</a></li>
+      </ul>
+      <hr>
+
+      <h3>Módulo de post (acessar conteúdo dos posts)</h3>
+      <ul>
         <li>Acessar <a href="{% url 'post' %}">Posts</a></li>
         <li>Acessar <a href="{% url 'comment' %}">Comentários</a></li>
-    </ul>
-  
+      </ul>
+      <hr>
 
-    
+      <h3>Módulo de moderação</h3>
+      <ul>
+        <li>Acessar <a href="{% url 'post_list' %}">Posts</a></li>
+      </ul>
+      
+    </div>
     
   </body>
 </html>

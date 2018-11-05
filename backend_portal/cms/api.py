@@ -1,4 +1,4 @@
-from rest_framework.routers import DefaultRouter
+'''from rest_framework.routers import DefaultRouter
 from rest_framework_extensions.routers import NestedRouterMixin
 from cms.views import SectionViewSet, CategoryViewSet, ContentViewSet
 #from rest_framework_nested import routers
@@ -8,7 +8,7 @@ from cms.views import SectionViewSet, CategoryViewSet, ContentViewSet
 router = DefaultRouter()
 router.register('section', SectionViewSet, base_name='section')
 router.register('category', CategoryViewSet, base_name='category')
-router.register('content', ContentViewSet, base_name='content')
+router.register('content', ContentViewSet, base_name='content')'''
 
 '''section_router = routers.NestedSimpleRouter(router, 'section', lookup='section')
 section_router.register('category', CategoryViewSet, base_name='category')
