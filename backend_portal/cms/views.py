@@ -4,62 +4,18 @@ from django.http import HttpResponse
 import datetime
 from rest_framework import viewsets
 from rest_framework import generics
-from .models import Category, Section, Content, Post, Comment
-from .forms import PostForm, CommentForm
-from .serializers import SectionSerializer, CategorySerializer, ContentSerializer, PostSerializer, CommentSerializer
-from rest_framework_extensions.mixins import NestedViewSetMixin
+from .models import About, Homepage, AreaBigCategory, SpecificArea, Opportunity
+#from .forms import PostForm, CommentForm
+from .serializers import AboutSerializer, HomepageSerializer, AreaBigCategorySerializer, SpecificAreaSerializer, OpportunitySerializer
+#from rest_framework_extensions.mixins import NestedViewSetMixin
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'cms/index.html')
 
-# Generic Content
 
-class SectionList(generics.ListAPIView):
-    queryset = Section.objects.all()
-    serializer_class = SectionSerializer
-
-
-class SectionDetail(generics.RetrieveAPIView):
-    queryset = Section.objects.all()
-    serializer_class = SectionSerializer
-
-class CategoryList(generics.ListAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-class CategoryDetail(generics.RetrieveAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-class ContentList(generics.ListAPIView):
-    queryset = Content.objects.all()
-    serializer_class = ContentSerializer
-
-class ContentDetail(generics.RetrieveAPIView):
-    queryset = Content.objects.all()
-    serializer_class = ContentSerializer
-
-#Posts API
-
-class PostList(generics.ListAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-
-class PostDetail(generics.RetrieveAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-
-class CommentList(generics.ListAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-
-class CommentDetail(generics.RetrieveAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-
-#Posts visual
+#ADAPTAR PARA O QUADRO DE OPORTUNIDADES!
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
@@ -94,3 +50,44 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+# Listando na API com JSON
+class AboutList(generics.ListAPIView):
+    queryset = About.objects.all()
+    serializer_class = AboutSerializer
+
+class AboutDetail(generics.RetrieveAPIView):
+    queryset = About.objects.all()
+    serializer_class = AboutSerializer
+
+class HomepageList(generics.ListAPIView):
+    queryset = Homepage.objects.all()
+    serializer_class = HomepageSerializer
+
+class HomepageDetail(generics.RetrieveAPIView):
+    queryset = Homepage.objects.all()
+    serializer_class = HomepageSerializer
+
+class AreaBigCategoryList(generics.ListAPIView):
+    queryset = AreaBigCategory.objects.all()
+    serializer_class = AreaBigCategorySerializer
+
+class AreaBigCategoryDetail(generics.RetrieveAPIView):
+    queryset = AreaBigCategory.objects.all()
+    serializer_class = AreaBigCategorySerializer
+
+class SpecificAreaList(generics.ListAPIView):
+    queryset = SpecificArea.objects.all()
+    serializer_class = SpecificAreaSerializer
+
+class SpecificAreaDetail(generics.RetrieveAPIView):
+    queryset = SpecificArea.objects.all()
+    serializer_class = SpecificAreaSerializer
+
+class OpportunityList(generics.ListAPIView):
+    queryset = Opportunity.objects.all()
+    serializer_class = OpportunitySerializer
+
+class OpportunityDetail(generics.RetrieveAPIView):
+    queryset = Opportunity.objects.all()
+    serializer_class = OpportunitySerializer

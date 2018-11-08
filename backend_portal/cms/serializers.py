@@ -1,41 +1,34 @@
 from rest_framework import serializers
 
-from .models import Category, Section, Content, Post, Comment
+#from .models import Category, Section, Content, Post, Comment
+from .models import About, Homepage, AreaBigCategory, SpecificArea, Opportunity
 
-
-class CategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Category
-        fields = '__all__'
-
-class SectionSerializer(serializers.ModelSerializer):
+class AboutSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Section
+        model = About
         fields = '__all__'
 
-class ContentSerializer(serializers.ModelSerializer):
+class HomepageSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Content
+        model = Homepage
         fields = '__all__'
 
-class PostSerializer(serializers.ModelSerializer):
+class AreaBigCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Post
+        model = AreaBigCategory
         fields = '__all__'
 
-class PostSerializer(serializers.ModelSerializer):
+class SpecificAreaSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Post
+        model = SpecificArea
         fields = '__all__'
 
-class CommentSerializer(serializers.ModelSerializer):
+class OpportunitySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Comment
+        model = Opportunity
         fields = '__all__'
-
