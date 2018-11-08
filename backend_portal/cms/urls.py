@@ -8,9 +8,6 @@ urlpatterns = [
     #path('content/', include(router.urls), name='content'),
     path('tinymce/', include('tinymce.urls')),
 
-    #path('post_list/post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
-    #path('post_list/comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
-    #path('post_list/comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
 
     path('homepage', views.HomepageList.as_view(), name='homepage'),
     path('homepage/<int:pk>/', views.HomepageDetail.as_view(), name='homepage'),
@@ -21,5 +18,7 @@ urlpatterns = [
     path('specific-area', views.SpecificAreaList.as_view(), name='specific-area'),
     path('specific-area/<int:pk>', views.SpecificAreaDetail.as_view()),
     path('opportunities', views.OpportunityList.as_view(), name='opportunities'),
-    path('opportunities/<int:pk>', views.OpportunityDetail.as_view())
+    path('opportunities/<int:pk>', views.OpportunityDetail.as_view()),
+
+    path('add-opportunity', views.add_opportunity, name='add_opportunity'),
 ]

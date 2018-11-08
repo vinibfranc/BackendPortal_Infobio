@@ -1,5 +1,4 @@
 from django.contrib import admin
-#from .models import Section, Category, Content, Post, Comment
 from .models import Homepage, About, AreaBigCategory, SpecificArea, Opportunity
 
 admin.site.site_header = 'Admin - Portal da InfoBio'

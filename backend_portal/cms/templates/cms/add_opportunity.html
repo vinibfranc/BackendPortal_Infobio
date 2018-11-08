@@ -3,11 +3,12 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <h1>Novo comentário</h1>
+            <h2>Portal da Infobio</h2>
+            <h1>Nova oportunidade</h1>
             
             <form method="POST" class="post-form">{% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="save btn btn-default">Enviar</button>
+                <button type="submit" class="save btn btn-info">Enviar</button>
             </form>
         </div>
     </div>
