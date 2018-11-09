@@ -1,11 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce import HTMLField
-#from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
 from django.utils import timezone
-#from django.contrib import admin
-#from adminfilters.models import Species, Breed
 
 # Homepage do portal #
 class Homepage(models.Model):

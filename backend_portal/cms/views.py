@@ -15,22 +15,11 @@ def home(request):
     return render(request, 'cms/index.html')
 
 
-#ADAPTAR PARA O QUADRO DE OPORTUNIDADES!
-
-'''def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
-    return render(request, 'cms/post_list.html', {'posts': posts})
-
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'cms/post_detail.html', {'post': post})'''
-
 class OpportunityView(SuccessMessageMixin, CreateView):
 
     template_name = 'cms/add_opportunity.html'
     form_class = OpportunityForm
-    #success_url = 'https://pivettamarcos.github.io/portal-infobio-ufcspa/inicio'
-    success_url = 'add-opportunity'
+    success_url = 'adicionar-oportunidade'
 
     def get_success_message(self, cleaned_data):
         print(cleaned_data)

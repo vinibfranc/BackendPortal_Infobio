@@ -1,6 +1,4 @@
 from rest_framework import serializers
-
-#from .models import Category, Section, Content, Post, Comment
 from .models import About, Homepage, AreaBigCategory, SpecificArea, Opportunity
 
 class AboutSerializer(serializers.ModelSerializer):
