@@ -1,6 +1,7 @@
 from django.urls import include, path
 #from cms.api import router
 from . import views
+from cms.views import OpportunityView
 
 urlpatterns = [
     
@@ -9,16 +10,16 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
 
 
-    path('homepage', views.HomepageList.as_view(), name='homepage'),
-    path('homepage/<int:pk>/', views.HomepageDetail.as_view(), name='homepage'),
-    path('about', views.AboutList.as_view(), name='about'),
-    path('about/<int:pk>/', views.AboutDetail.as_view()),
-    path('big-area', views.AreaBigCategoryList.as_view(), name='big-area'),
-    path('big-area/<int:pk>/', views.AreaBigCategoryDetail.as_view()),
-    path('specific-area', views.SpecificAreaList.as_view(), name='specific-area'),
-    path('specific-area/<int:pk>', views.SpecificAreaDetail.as_view()),
-    path('opportunities', views.OpportunityList.as_view(), name='opportunities'),
-    path('opportunities/<int:pk>', views.OpportunityDetail.as_view()),
+    path('principal', views.HomepageList.as_view(), name='principal'),
+    path('principal/<int:pk>/', views.HomepageDetail.as_view(), name='homepage'),
+    path('sobre', views.AboutList.as_view(), name='sobre'),
+    path('sobre/<int:pk>/', views.AboutDetail.as_view()),
+    path('grande-area', views.AreaBigCategoryList.as_view(), name='grande-area'),
+    path('grande-area/<int:pk>/', views.AreaBigCategoryDetail.as_view()),
+    path('area-especifica', views.SpecificAreaList.as_view(), name='area-especifica'),
+    path('area-especifica/<int:pk>', views.SpecificAreaDetail.as_view()),
+    path('oportunidades', views.OpportunityList.as_view(), name='oportunidades'),
+    path('oportunidades/<int:pk>', views.OpportunityDetail.as_view()),
 
-    path('add-opportunity', views.add_opportunity, name='add_opportunity'),
+    path('adicionar-oportunidade', OpportunityView.as_view(), name='adicionar-oportunidade'),
 ]

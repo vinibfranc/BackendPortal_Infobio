@@ -3,23 +3,44 @@
 {% block content %}
     <div class="container">
 
-        <div class="row jumbotron">
+        <div class="bg-danger">
+            {% if messages %}
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.location.href = 'https://pivettamarcos.github.io/portal-infobio-ufcspa/oportunidades'
+                        }, 5000);
+                    </script>
+                {% endfor %}
+                </div>
+            </div>
+            {% endif %}
 
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+            <div class="row">
 
-            <h3>Portal da Infobio</h3>
-            <h2>Nova oportunidade</h2>
-            
-            <form method="POST" class="post-form">{% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h4>Portal da Infobio</h4>
+                    <h2>Nova oportunidade</h2>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="col-md-6 col-md-offset-3 text-center">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
+
     </div>
 {% endblock %}

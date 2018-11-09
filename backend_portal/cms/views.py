@@ -8,7 +8,8 @@ from .models import About, Homepage, AreaBigCategory, SpecificArea, Opportunity
 from .forms import OpportunityForm
 from .serializers import AboutSerializer, HomepageSerializer, AreaBigCategorySerializer, SpecificAreaSerializer, OpportunitySerializer
 from django.utils import timezone
-from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic.edit import CreateView
 
 def home(request):
     return render(request, 'cms/index.html')
@@ -24,20 +25,16 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'cms/post_detail.html', {'post': post})'''
 
-def add_opportunity(request):
-    #post = get_object_or_404(Opportunity)
-    if request.method == "POST":
-        form = OpportunityForm(request.POST)
-        if form.is_valid():
-            opportunity = form.save(commit=False)
-            opportunity.save()
-            #messages.info(request, 'Enviado com sucesso!')
-            messages.success(request, "Enviado com sucesso!")
-            return redirect('https://pivettamarcos.github.io/portal-infobio-ufcspa/inicio')
-    else:
-        form = OpportunityForm()
-        messages.error(request, form.errors)
-    return render(request, 'cms/add_opportunity.html', {'form': form})
+class OpportunityView(SuccessMessageMixin, CreateView):
+
+    template_name = 'cms/add_opportunity.html'
+    form_class = OpportunityForm
+    #success_url = 'https://pivettamarcos.github.io/portal-infobio-ufcspa/inicio'
+    success_url = 'add-opportunity'
+
+    def get_success_message(self, cleaned_data):
+        print(cleaned_data)
+        return 'Obrigado! A oportunidade foi registrada e estará no site em breve!'
 
 # Listando informações na API em JSON
 class AboutList(generics.ListAPIView):
