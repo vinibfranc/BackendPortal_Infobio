@@ -7,9 +7,7 @@ from rest_framework import generics
 from .models import About, Homepage, AreaBigCategory, SpecificArea, Opportunity
 from .forms import OpportunityForm
 from .serializers import AboutSerializer, HomepageSerializer, AreaBigCategorySerializer, SpecificAreaSerializer, OpportunitySerializer
-#from rest_framework_extensions.mixins import NestedViewSetMixin
 from django.utils import timezone
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def home(request):
@@ -34,10 +32,11 @@ def add_opportunity(request):
             opportunity = form.save(commit=False)
             opportunity.save()
             #messages.info(request, 'Enviado com sucesso!')
-            #messages.success(request, "Enviado com sucesso!")
+            messages.success(request, "Enviado com sucesso!")
             return redirect('https://pivettamarcos.github.io/portal-infobio-ufcspa/inicio')
     else:
         form = OpportunityForm()
+        messages.error(request, form.errors)
     return render(request, 'cms/add_opportunity.html', {'form': form})
 
 # Listando informações na API em JSON

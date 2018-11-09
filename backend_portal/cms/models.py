@@ -62,20 +62,13 @@ class SpecificArea(models.Model):
 
 # Quadro de oportunidades #
 class Opportunity(models.Model):
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    institution = models.CharField(max_length=150)
-    city = models.CharField(max_length=100)
-    area = models.CharField(max_length=150)
-    created_date = models.DateTimeField(default=timezone.now)
-    approved = models.BooleanField(default=False)
-
-    '''def approve(self):
-        self.approved = True
-        self.save()
-
-    def approved_opportunities(self):
-        return self.opportunitys.filter(approved=True)'''
+    title = models.CharField(max_length=150, verbose_name="título")
+    description = models.TextField(verbose_name="descrição")
+    institution = models.CharField(max_length=150, verbose_name="instituição")
+    city = models.CharField(max_length=100, verbose_name="cidade")
+    area = models.CharField(max_length=150, verbose_name="área")
+    created_date = models.DateTimeField(default=timezone.now, verbose_name="criado em")
+    approved = models.BooleanField(default=False, verbose_name="Moderado")
     
     class Meta:
         verbose_name = 'Oportunidade'
