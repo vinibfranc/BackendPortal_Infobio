@@ -8,4 +8,9 @@ admin.site.register(Homepage)
 admin.site.register(About)
 admin.site.register(AreaBigCategory)
 admin.site.register(SpecificArea)
-admin.site.register(Opportunity)
+#admin.site.register(Opportunity)
+
+@admin.register(Opportunity)
+class OpportunityAdmin(admin.ModelAdmin):
+    list_display = ('title', 'approved')
+    #list_filter = (SpeciesListFilter, )

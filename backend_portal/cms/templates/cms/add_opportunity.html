@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
 
-        <div class="bg-danger">
+        <div class="fundo form-group" style="padding: 50px">
             {% if messages %}
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
@@ -24,7 +24,7 @@
             <div class="row">
 
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <h4>Portal da Infobio</h4>
+                    <h4 >Portal da Infobio</h4>
                     <h2>Nova oportunidade</h2>
                 </div>
             </div>
@@ -34,6 +34,7 @@
                     <form method="POST" class="post-form">
                         {% csrf_token %}
                         {{ form.as_p }}
+
                         <div class="col-md-6 col-md-offset-3 text-center">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>

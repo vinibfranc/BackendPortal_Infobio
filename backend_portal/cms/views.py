@@ -22,7 +22,7 @@ class OpportunityView(SuccessMessageMixin, CreateView):
     success_url = 'adicionar-oportunidade'
 
     def get_success_message(self, cleaned_data):
-        print(cleaned_data)
+        
         return 'Obrigado! A oportunidade foi registrada e estará no site em breve!'
 
 # Listando informações na API em JSON
