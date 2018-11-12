@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tinymce',
     'cms',
     'rest_framework',
+    'corsheaders',
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -72,6 +73,7 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,6 +82,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'pivettamarcos.github.io/portal-infobio-ufcspa/:80',
+)
 
 ROOT_URLCONF = 'backend_portal.urls'
 
