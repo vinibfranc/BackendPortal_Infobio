@@ -6,4 +6,4 @@ class OpportunityForm(forms.ModelForm):
 
     class Meta:
         model = Opportunity
-        fields = ('title', 'description', 'institution', 'city', 'area')
+        fields = ('title', 'description', 'institution', 'city', 'area', 'url_details')
